@@ -1,7 +1,9 @@
 # concert-testing-examples
-Example usage of [ConCert](https://github.com/AU-COBRA/ConCert/)'s property-based testing framework, on various smart contracts
+Example usage of [ConCert](https://github.com/AU-COBRA/ConCert/)'s property-based testing framework, on various smart contracts.
 
-## Requirements
+The [examples](/examples) folder contains tests of different smart contracts. Each example consists of a `*Gen.v` file, containing the test data generator function for the given contract. The `*.Spec` file contains the QuickChick properties to test. The tests are executed in `RunTests.v`.   
+
+## Requirements & Building
 
 Requires Coq 8.11.2 to compile.
 The easiest way to install Coq and the dependencies is through `opam`.
