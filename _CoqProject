@@ -1,0 +1,21 @@
+-arg -w -arg -undeclared-scope
+
+-R examples/ ConCertTestingExamples
+examples/DexterTests.Dexter.v
+examples/DexterTests.DexterGens.v
+examples/DexterTests.DexterPrinters.v
+examples/DexterTests.DexterTests.v
+
+examples/EIP20Tests.EIP20TokenGens.v
+examples/EIP20Tests.EIP20TokenPrinters.v
+examples/EIP20Tests.EIP20TokenTests.v
+
+examples/EscrowTests.EscrowExtras.v
+examples/EscrowTests.EscrowGens.v
+examples/EscrowTests.EscrowPrinters.v
+examples/EscrowTests.EscrowTests.v
+
+examples/iTokenBuggyTests.iTokenBuggy.v
+examples/iTokenBuggyTests.iTokenBuggyGens.v
+examples/iTokenBuggyTests.iTokenBuggyPrinters.v
+examples/iTokenBuggyTests.iTokenBuggyTests.v
