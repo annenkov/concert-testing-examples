@@ -1,4 +1,3 @@
-# concert-testing-examples
 Example usage of [ConCert](https://github.com/AU-COBRA/ConCert/)'s property-based testing framework, on various smart contracts.
 
 The [examples](/examples) folder contains tests of different smart contracts. Each example consists of a `*Gen.v` file, containing the test data generator function for the given contract. The `*.Spec` file contains the QuickChick properties to test. The tests are executed in `RunTests.v`.   
