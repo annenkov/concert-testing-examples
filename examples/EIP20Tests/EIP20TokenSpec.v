@@ -10,7 +10,7 @@ From ConCert Require Import BoundedN.
 From ConCert Require Import Containers.
 From ConCert Require Import EIP20Token.
 From ConCert Require Import ResultMonad.
-Require Import Extras.
+From ConCert Require Import Extras.
 
 From ConCert.Execution.QCTests Require Import
   TestUtils ChainPrinters SerializablePrinters EIP20TokenPrinters EIP20TokenGens TraceGens.

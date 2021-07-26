@@ -10,11 +10,12 @@ From ConCert Require Import BoundedN.
 From ConCert Require Import Extras.
 From ConCert Require Import ChainedList.
 From ConCert Require Import Containers.
-Require Import ZArith.
+From Coq Require Import ZArith.
 
 From QuickChick Require Import QuickChick. Import QcNotation.
 From ConCert.Execution.QCTests Require Import
-  TestUtils ChainPrinters SerializablePrinters TraceGens EscrowPrinters EscrowGens.
+  TestUtils ChainPrinters SerializablePrinters TraceGens.
+Require Import EscrowPrinters EscrowGens.
 From ConCert.Utils Require Import RecordUpdate.
 From Coq Require Import List.
 From Coq Require Import ZArith.

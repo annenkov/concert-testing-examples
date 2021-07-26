@@ -4,12 +4,13 @@ From ConCert Require Import Extras.
 From ConCert Require Import Containers.
 From ConCert Require Import BoundedN.
 From ConCert Require Import ResultMonad.
-Require Import Monads.
-Require Import ZArith.
+From ConCert Require Import Monads.
+From Coq Require Import ZArith.
 
 From QuickChick Require Import QuickChick. Import QcNotation.
 From ConCert.Execution.QCTests Require Import
-  TestUtils TraceGens DexterGens.
+  TestUtils TraceGens. 
+Require Import DexterGens.
 From ConCert.Utils Require Import RecordUpdate.
 From Coq Require Import List.
 From Coq Require Import Morphisms.
@@ -118,7 +119,7 @@ Definition dexter_state env := get_contract_state Dexter.State env dexter_caddr.
 Definition token_state env := get_contract_state FA2Token.State env fa2_caddr.
 Definition explit_state env := get_contract_state ExploitContractState env exploit_caddr.
 
-From ConCert.Execution.QCTests Require Import DexterGens.
+Require Import DexterGens.
 
 Module TestInfo <: DexterTestsInfo.
   Definition fa2_contract_addr := fa2_caddr.

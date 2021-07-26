@@ -6,13 +6,13 @@ From ConCert Require Import Blockchain Escrow.
 From ConCert Require Import Serializable.
 From ConCert.Execution.QCTests Require Import TestUtils TraceGens.
 
-Require Import ZArith.
+From Coq Require Import ZArith.
 
 From QuickChick Require Import QuickChick. Import QcNotation.
 From ExtLib.Structures Require Import Monads.
 Import MonadNotation. Open Scope monad_scope.
 From Coq Require Import List. Import ListNotations.
-Require Import Containers.
+From ConCert Require Import Containers.
 
 Module Type EscrowGensInfo.
   Parameter contract_addr : Address.

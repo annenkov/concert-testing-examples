@@ -9,10 +9,11 @@ From ConCert Require Import BoundedN.
 From ConCert Require Import Containers.
 From ConCert Require Import iTokenBuggy.
 From ConCert Require Import ResultMonad.
-Require Import Extras.
+From ConCert.Execution Require Import Extras.
 
 From ConCert.Execution.QCTests Require Import
-  TestUtils ChainPrinters iTokenBuggyPrinters iTokenBuggyGens TraceGens.
+  TestUtils ChainPrinters TraceGens. 
+Require Import iTokenBuggyPrinters iTokenBuggyGens.
 
 From Coq Require Import List. 
 Import ListNotations.
