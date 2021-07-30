@@ -31,4 +31,4 @@ jobs:
         eval $(opam env --switch=${COMPILER_EDGE} --set-switch) && \
         opam repo add coq-released https://coq.inria.fr/opam/released && \
         opam pin -j 4 add https://github.com/AU-COBRA/ConCert.git && \
-        make && \
+        make
