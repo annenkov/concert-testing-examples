@@ -141,19 +141,17 @@ Definition call_dexter owner_addr :=
   build_act owner_addr (act_call exploit_caddr 0%Z (@serialize _ _ (tokens_sent dummy_descriptor))).
 
 Definition gExploitAction : GOpt Action :=
-  bindGen (elems [person_1; person_2; person_3]) (fun addr =>
-    returnGenSome (call_dexter addr)
-  ).
+    returnGenSome (call_dexter person_1).
 
 Definition gExploitChainTraceList max_acts_per_block cb length :=
   gChain cb (fun cb _ => gExploitAction) length 1 max_acts_per_block.
-
+  
 (* Sample (gExploitAction). *)
 (* Sample (gExploitChainTraceList 1 chain1 1). *)
 
 Definition person_1_initial_balance : Amount := env_account_balances chain1 person_1.
 
-Definition dexter_liquidity : Amount := env_account_balances chain1 dexter_caddr.
+Definition dexter_liquidity c : Amount := env_account_balances c dexter_caddr.
 
 Definition account_tokens (env : Environment) (account : Address) : N :=
   with_default 0%N (
@@ -167,14 +165,14 @@ Definition account_tokens (env : Environment) (account : Address) : N :=
 (* 1000%N *)
 (* Compute person_1_initial_balance. *)
 (* 0%Z *)
-(* Compute dexter_liquidity. *)
+(* Compute dexter_liquidity chain1. *)
 (* 30%Z *)
 
 (* This property asserts that the token reserve of the dexter contract is consistent
    with how much money has been exchanged for tokens, with respect to the conversion function 'getInputPrice' *)
 Open Scope Z_scope.
-Definition tokens_to_asset_correct_P_opt (env : Environment) : option Checker :=
-  do state_dexter <- dexter_state env;
+
+Definition tokens_to_asset_correct_P_opt (env : Environment) (state_dexter : Dexter.State ): option Checker :=
   let person_1_balance := env_account_balances env person_1 in
   let dexter_balance := env_account_balances env dexter_caddr in
   let dexter_initial_balance := env_account_balances chain1 dexter_caddr in
@@ -191,19 +189,30 @@ Definition tokens_to_asset_correct_P_opt (env : Environment) : option Checker :=
       "dexter balance: " ++ show dexter_balance ++ nl ++
       "dexter tokens: " ++ show (account_tokens env dexter_caddr) ++ nl ++
       "history: " ++ show (state_dexter.(price_history))
+    ) (
+      (5 =? (List.length state_dexter.(price_history)))%nat ==> 
+      (expected_dexter_balance <? dexter_balance)
     )
-    (checker (expected_dexter_balance <? dexter_balance))
   ).
 
-Definition tokens_to_asset_correct_P env :=
-  match tokens_to_asset_correct_P_opt env with
-  | Some p => p
-  | None => false ==> true
-  end.
+Definition tokens_to_asset_correct_P (env : Environment) :=
+  (* (2 <? env.(current_slot))%nat ==> *)
+  with_default (false ==> true) (
+    do s <- dexter_state env ;
+    tokens_to_asset_correct_P_opt env s
+  ).
 
+
+Definition forAllBlocks {prop : Type}
+                       `{Checkable prop}
+                        (pf : ChainState -> prop)
+                        : Checker :=
+  forAll (gExploitChainTraceList 1 chain1 2)
+  (fun cb => ChainTrace_ChainTraceProp cb.(builder_trace) pf).
+
+(* Main property to test *)
 Definition tokens_to_asset_correct :=
-  forAllBlocks 1 chain1 (gExploitChainTraceList 1) tokens_to_asset_correct_P.
-(* QuickChick tokens_to_asset_correct. *)
+  forAllBlocks tokens_to_asset_correct_P.
 
 (* Illustration of how the reentrancy attack can give the caller more money with the same amount of tokens.
    Notice how in the second sequence, the second argument remains the same, ie. it emulates the reentrancy attack. *)
