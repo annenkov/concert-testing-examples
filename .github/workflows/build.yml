@@ -19,7 +19,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: aucobra/concert:deps-coq-8.11
+    container: aucobra/concert-testing:sefm-snapshot
     steps:
     - run: sudo chown -R coq:coq .
     - uses: actions/checkout@v2
@@ -29,6 +29,4 @@ jobs:
         env && \
         opam switch && \
         eval $(opam env --switch=${COMPILER_EDGE} --set-switch) && \
-        opam repo add coq-released https://coq.inria.fr/opam/released && \
-        opam pin -j 4 add https://github.com/AU-COBRA/ConCert.git -y && \
         make
