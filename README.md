@@ -23,7 +23,9 @@ opam pin -j 4 add https://github.com/AU-COBRA/ConCert.git
 If Coq wasn't installed previously, it will be installed as one of the dependencies.
 The process of building all the dependencies is quite time-consuming.
 
-After the process of building dependencies is finished, run `make` in the project root to check that the examples compile and see the resutls of running the tests.
+After the process of building dependencies is finished, run `make` in the project root to check that the examples compile and see the results of running the tests.
+
+NOTE: currently, the development cannot be built under Windows.
 
 ### Using `Docker`
 
