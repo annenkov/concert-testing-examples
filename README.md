@@ -36,7 +36,7 @@ In the root folder of the project (where the `Dockerfile` is located), run the f
 docker build -t concert-testing-image .
 ```
 
-After build finishes, one can interact with the image using the following command:
+After build finishes, one can connect to the image in the interactive mode using the following command:
 
 ```
 docker run -it concert-testing-image
@@ -53,4 +53,15 @@ eval $(opam env --switch=${COMPILER_EDGE} --set-switch)
 make clean && make
 ```
 
+The image comes with the Emacs editor allowing to step through the development.
 
+Run the following, after connecting to the image in the interactive mode:
+
+```
+cd concert-testing-examples
+eval $(opam env --switch=${COMPILER_EDGE} --set-switch)
+emacs ./examples/RunTests.v
+```
+
+After the file is open, it is possible to step through the development by moving the cursor to the required line and pressing `Ctrl-C RET`.
+See the [Proof General documentation](https://proofgeneral.github.io/) for more details.
