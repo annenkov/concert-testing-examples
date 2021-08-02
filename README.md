@@ -8,8 +8,6 @@ The [examples](/examples) folder contains tests of different smart contracts. Ea
 
 ### Using `opam`
 
-![build status]https://github.com/mikkelmilo/concert-testing-examples/actions/workflows/build.yml/badge.svg
-
 The development requires the Coq proof assistant version 8.11.2 to compile.
 The easiest way to install Coq and the dependencies is through opam.
 `opam` opam is a package manager for OCaml; read the installation instructions [here](https://opam.ocaml.org/doc/Install.html).
