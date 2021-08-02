@@ -1,3 +1,5 @@
+![build status](https://github.com/mikkelmilo/concert-testing-examples/actions/workflows/build.yml/badge.svg)
+
 Example usage of [ConCert](https://github.com/AU-COBRA/ConCert/)'s property-based testing framework, on various smart contracts.
 
 The [examples](/examples) folder contains tests of different smart contracts. Each example consists of a `*Gen.v` file, containing the test data generator function for the given contract. The `*Spec.v` files contain the QuickChick properties to test. The tests are executed in `RunTests.v`.
@@ -5,6 +7,8 @@ The [examples](/examples) folder contains tests of different smart contracts. Ea
 ## Requirements & Building
 
 ### Using `opam`
+
+![build status]https://github.com/mikkelmilo/concert-testing-examples/actions/workflows/build.yml/badge.svg
 
 The development requires the Coq proof assistant version 8.11.2 to compile.
 The easiest way to install Coq and the dependencies is through opam.
