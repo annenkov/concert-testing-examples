@@ -3,7 +3,7 @@ From ConCert Require Import Serializable.
 From ConCert Require Import Extras.
 From ConCert Require Import Containers.
 From ConCert Require Import BoundedN.
-From ConCert Require Import ResultMonad.
+From ConCert.Execution Require Import ResultMonad.
 From ConCert Require Import Monads.
 From Coq Require Import ZArith.
 
