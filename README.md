@@ -5,7 +5,7 @@ Example usage of [ConCert](https://github.com/AU-COBRA/ConCert/)'s property-base
 The [examples](/examples) folder contains tests of different smart contracts. Each example consists of a `*Gen.v` file, containing the test data generator function for the given contract. The `*Spec.v` files contain the QuickChick properties to test. The tests are executed in `RunTests.v`.
 
 Using the extraction feature of ConCert, we can automatically produce source code for the tested contracts in several target languages.
-See [EIP/ERC20 code extracted to CameLIGO](https://github.com/AU-COBRA/extraction-resutls/blob/4285748c27d79b348a30f6381aeb27fcf6375fca/cameligo-extract/tests/eip20tokenCertifiedExtraction.mligo) and [Escrow code extracted Rust](https://github.com/AU-COBRA/extraction-resutls/blob/4285748c27d79b348a30f6381aeb27fcf6375fca/concordium-extract/escrow-extracted/src/lib.rs)
+See [EIP/ERC20 code extracted to CameLIGO](https://github.com/AU-COBRA/extraction-resutls/blob/4285748c27d79b348a30f6381aeb27fcf6375fca/cameligo-extract/tests/eip20tokenCertifiedExtraction.mligo) and [Escrow code extracted to Rust](https://github.com/AU-COBRA/extraction-resutls/blob/4285748c27d79b348a30f6381aeb27fcf6375fca/concordium-extract/escrow-extracted/src/lib.rs)
 
 We use Github actions to set up the continuous integration (CI) workflow that runs the tests for each commit.
 
